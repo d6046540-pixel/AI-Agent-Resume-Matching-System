@@ -216,3 +216,40 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+
+# ==========================
+# AI Project Files
+# ==========================
+
+# Chroma Vector Database
+chroma_db/
+job_chroma_db/
+resume_chroma_db/
+
+# Local vector database files
+*.sqlite3
+
+# HuggingFace cache
+.cache/
+.cache/huggingface/
+
+# Downloaded models
+models/
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# Personal documents
+*.pdf
+
+# API Keys
+*.key
+*.json
+secrets/
+
+# Logs
+logs/
+*.log
