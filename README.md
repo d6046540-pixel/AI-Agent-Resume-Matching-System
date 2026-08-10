@@ -1,154 +1,157 @@
 # AI-Agent-Resume-Matching-System
 
-> 基于 LangGraph + RAG + Tool Calling 构建的大模型 Agent 应用系统
+> 基于 LangGraph + RAG + Tool Calling 架构构建的智能岗位匹配 Agent 系统，实现简历理解、岗位检索、能力分析与职业建议生成。
 
-一个面向复杂信息检索与智能分析场景的 LLM Agent 项目。
+一个面向真实职业分析场景的大模型 Agent 应用项目。
 
-本项目通过 Agent 工作流编排、知识库检索、工具调用和大模型推理，实现从用户需求理解、信息检索到智能分析生成的完整流程。
-
-项目以「个人能力分析与岗位匹配」作为业务 Demo 场景，用于验证大模型 Agent 在真实任务中的应用能力。
+本项目通过 Agent 工作流编排、知识库检索、工具调用以及大模型推理，实现从用户需求理解、信息检索到智能分析报告生成的完整流程。
 
 
 ---
 
-# ✨ 项目亮点
+# 🌟 Project Overview
 
-- 🚀 基于 LangGraph 构建 Agent 工作流
-- 🔍 完整实现 RAG（Retrieval-Augmented Generation）流程
-- 🛠 支持 Agent Tool Calling 工具调用
-- 🧠 支持 Memory 对话状态管理
-- 📚 构建个人知识库与业务知识库
-- 🔄 实现 Query Understanding 与 Query Rewrite
-- 🎯 支持向量检索 + Rerank 优化
-- 🏗 采用模块化工程结构设计
+传统岗位匹配通常依赖关键词搜索，难以理解：
 
+- 用户真实技能水平
+- 项目经验价值
+- 岗位技术要求
+- 能力差距
 
----
+本项目构建一个基于 LLM Agent 的智能岗位匹配系统，通过：
 
-# 🏗 系统架构
+- LangGraph Agent Workflow
+- RAG 检索增强生成
+- Vector Database
+- Tool Calling
+- Query Rewrite
+- Reranking
 
-```
-                         用户输入
-
-                            |
-                            v
-
-                  Query Understanding
-
-                            |
-                            v
-
-                     Query Rewrite
-
-                            |
-                            v
-
-                    LangGraph Agent
-
-                            |
-
-        ------------------------------------------------
-
-        |                    |                         |
-
-        v                    v                         v
-
-  Resume Tool          Job Search Tool          Match Tool
-
-
-        |                    |                         |
-
-        v                    v                         v
-
-
- Resume Vector DB     Job Vector DB          Match Chain
-
-
-        |
-        v
-
-    Embedding
-
-        |
-        v
-
- Vector Retrieval
-
-        |
-        v
-
-    Reranker
-
-        |
-        v
-
-       LLM
-
-        |
-        v
-
-    Final Response
-
-```
+实现更加智能的职业分析与岗位匹配。
 
 
 ---
 
-# 🚀 核心功能
+# 🚀 Project Highlights
+
+- ✅ 基于 LangGraph 构建 Agent 工作流
+- ✅ 完整实现 RAG Pipeline
+- ✅ 支持 Agent Tool Calling
+- ✅ 支持 Query Understanding
+- ✅ 支持 Query Rewrite 优化检索
+- ✅ 构建个人简历知识库
+- ✅ 构建岗位信息知识库
+- ✅ 使用向量检索 + Reranker 提升匹配效果
+- ✅ 模块化工程架构设计
 
 
-## 1. Agent 工作流
+---
+
+# 🏗️ System Architecture
+
+
+![Architecture](docs/architecture.png)
+
+
+如果图片不可用，可查看：
+
+[Architecture Documentation](docs/architecture.md)
+
+
+
+---
+
+# 🔥 Agent Workflow
+
+
+
+User Query
+
+|
+v
+
+Query Understanding
+
+|
+v
+
+Query Rewrite
+
+|
+v
+
+LangGraph Agent
+
+|
+|
++----------------+
+|                |
+v                v
+
+Resume Tool Job Search Tool
+
+|                |
+
+Resume DB Job Vector DB
+
+|
+v
+
+Retriever
+
+|
+v
+
+Reranker
+
+|
+v
+
+DeepSeek LLM
+
+|
+v
+
+Career Analysis Report
+
+
+
+---
+
+# 🧠 Core Features
+
+
+## 1. LangGraph Agent
 
 基于 LangGraph 实现 Agent 状态管理和任务编排。
 
-整体流程：
+Agent 可以根据用户需求：
 
-```
-用户问题
-
-↓
-
-任务理解
-
-↓
-
-Agent决策
-
-↓
-
-调用工具
-
-↓
-
-获取知识库信息
-
-↓
-
-结果分析
-
-↓
-
-生成最终回答
-
-```
-
-
-Agent 可以根据任务需求自动完成：
-
-- 查询个人信息
-- 查询岗位信息
+- 查询个人技能信息
+- 查询岗位需求
+- 调用不同工具
 - 分析能力匹配度
 - 生成职业建议
 
 
+核心能力：
+
+- Agent Workflow
+- State Management
+- Tool Calling
+- Memory Checkpoint
+
+
+
 ---
 
-# 2. RAG 检索增强生成系统
-
-项目实现完整 RAG Pipeline：
+# 2. RAG Knowledge System
 
 
-```
+完整 RAG Pipeline：
+
+
+
 Document
 
 ↓
@@ -179,50 +182,42 @@ Reranker
 
 LLM Generation
 
-```
 
 
-技术组件：
+实现：
 
-- BGE-small-zh-v1.5 Embedding
-- Chroma Vector Database
-- BGE Reranker
-
-
-实现能力：
-
-- 文档解析
+- PDF 文档解析
 - 文本切分
 - 向量化
 - 相似度检索
 - Query Rewrite
 - Multi Query Retrieval
-- Rerank 优化
+- Reranking
 
 
 ---
 
-# 3. Query Understanding & Query Rewrite
+# 3. Query Understanding & Rewrite
 
 
 用户输入自然语言问题：
 
 例如：
 
-```
-分析我的Agent开发能力
-```
+
+分析我的 Agent 开发能力
 
 
-系统自动理解用户需求，并生成适合向量检索的 Query：
 
-```
+系统自动生成适合检索的问题：
+
+
 Agent开发技能
 
 Agent项目经验
 
-智能体开发经验
-```
+LangGraph项目经验
+
 
 
 提升复杂问题下的检索准确率。
@@ -233,185 +228,153 @@ Agent项目经验
 # 4. Agent Tool Calling
 
 
-Agent 通过工具调用完成任务。
+Agent 通过工具完成任务。
 
 
-当前设计工具：
+## Resume Search Tool
 
-
-## resume_search
-
-个人知识库检索工具。
+个人知识库检索：
 
 功能：
 
 - 查询个人技能
-- 查询项目经历
+- 查询项目经验
 - 查询技术栈
 
 
----
 
-## job_search
+## Job Search Tool
 
-岗位知识库检索工具。
-
-功能：
-
-- 查询目标岗位
-- 获取岗位技能要求
-- 分析岗位方向
-
-
----
-
-## job_match
-
-岗位匹配分析工具。
+岗位知识库检索：
 
 功能：
 
-- 对比用户能力和岗位要求
+- 获取岗位需求
+- 分析技术要求
+- 获取岗位方向
+
+
+
+## Match Tool
+
+岗位匹配分析：
+
+功能：
+
+- 对比用户能力和岗位需求
 - 输出匹配结果
-- 提供能力提升建议
+- 给出提升建议
+
 
 
 ---
 
-# 5. Memory 状态管理
+# 5. Memory & State Management
 
 
-基于 LangGraph Checkpointer 实现 Agent 状态保存。
+基于 LangGraph Checkpointer 实现：
 
-
-支持：
-
-- 多轮对话
-- 上下文保持
+- 多轮对话状态保存
 - Agent 状态管理
+- Workflow 状态恢复
 
 
 ---
 
-# 🛠 技术栈
+# 🛠️ Technology Stack
 
 
-## Large Language Model
+| Category | Technology |
+|---|---|
+| Language | Python |
+| Agent Framework | LangGraph |
+| LLM Framework | LangChain |
+| Vector Database | ChromaDB |
+| Embedding Model | BGE Embedding |
+| Reranker | BGE Reranker |
+| Backend | FastAPI |
+| Data Validation | Pydantic |
+| LLM API | DeepSeek API |
 
-- DeepSeek API
-
-
-## Agent Framework
-
-- LangChain
-- LangGraph
-
-
-## RAG
-
-- Chroma
-- BGE Embedding
-- BGE Reranker
-
-
-## Backend
-
-- Python
-- FastAPI
-
-
-## Development
-
-- Git
-- Virtual Environment
 
 
 ---
 
-# 📂 项目结构
+# 📂 Project Structure
 
 
-```
+
 AI-Agent-Resume-Matching-System
 
 ├── agents
-│   └── Agent核心逻辑
+│ └── Agent核心逻辑
 
 ├── api
-│   └── API接口
+│ └── FastAPI接口
 
 ├── chains
-│   └── LLM流程链
+│ └── LLM Chain流程
 
 ├── tools
-│   └── Agent工具
+│ └── Agent工具
 
 ├── retrievers
-│   └── 检索模块
+│ └── 检索模块
 
 ├── vectorstores
-│   └── Chroma向量数据库
+│ └── Chroma向量数据库
 
 ├── embeddings
-│   └── Embedding模块
+│ └── Embedding模块
 
 ├── rerankers
-│   └── 重排序模块
+│ └── Reranker模块
 
 ├── memory
-│   └── 状态管理
+│ └── 状态管理
 
 ├── loaders
-│   └── 文档加载
+│ └── 文档加载
 
 ├── pipelines
-│   └── RAG流程
+│ └── RAG Pipeline
 
 ├── prompts
-│   └── Prompt模板
+│ └── Prompt模板
 
 ├── schemas
-│   └── 数据结构
+│ └── 数据结构
 
 └── main.py
 
-```
 
 
 ---
 
-# ▶️ 项目运行
+# ⚙️ Installation
 
 
-## 安装依赖
+创建虚拟环境：
+
 
 ```bash
+python -m venv .venv
+
+安装依赖：
+
 pip install -r requirements.txt
-```
 
+运行：
 
-## 启动项目
-
-```bash
 python main.py
-```
-
-
----
-
-# 💡 Demo 示例
-
+🎯 Example
 
 用户输入：
 
-```
 分析我的Agent开发能力
-```
 
+Agent执行：
 
-Agent执行流程：
-
-```
 1. 理解用户需求
 
 2. Rewrite检索关键词
@@ -423,47 +386,31 @@ Agent执行流程：
 5. 分析技术能力
 
 6. 生成能力报告
-
-```
-
-
----
-
-# 📊 技术能力覆盖
-
-
-| 技术方向 | 实现 |
-|---|---|
-| LLM API调用 | ✅ |
-| Prompt Engineering | ✅ |
-| Agent开发 | ✅ |
-| LangGraph | ✅ |
-| Tool Calling | ✅ |
-| Memory | ✅ |
-| RAG | ✅ |
-| Embedding | ✅ |
-| Vector Database | ✅ |
-| Query Rewrite | ✅ |
-| Reranker | ✅ |
-
-
----
-
-# 🌱 Future Work
-
+📊 Technical Coverage
+Capability	Status
+LLM API	✅
+Prompt Engineering	✅
+Agent Development	✅
+LangGraph	✅
+Tool Calling	✅
+RAG	✅
+Embedding	✅
+Vector Database	✅
+Query Rewrite	✅
+Reranker	✅
+Memory Checkpoint	✅
+🔮 Future Improvements
 
 计划继续优化：
 
-- 多 Agent 协作
-- Agent 自动规划
-- 长期记忆系统
-- Agent 可观测性
-- Web 前端展示
-- 服务部署
-
-
----
-
-# 👨‍💻 Author
+Multi-Agent Collaboration
+Long-term Memory
+Agent Evaluation System
+LangSmith / Langfuse Observability
+Web Frontend
+Production Deployment
+👤 Author
 
 AI Agent Developer
+
+Building LLM Applications & Agent Systems
