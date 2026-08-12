@@ -13,15 +13,16 @@ question = "我的背景适合AI Agent开发岗位吗？"
 
 result = agent.invoke(
     {
-        "messages":[
-            {
-                "role":"user",
-                "content":question
-            }
+        "messages": [
+            ("user", "分析我的Agent开发能力")
         ]
+    },
+    config={
+        "configurable": {
+            "thread_id": "demo_user_001"
+        }
     }
 )
 
 
-
-print(result)
+print(result["messages"][-1].content)

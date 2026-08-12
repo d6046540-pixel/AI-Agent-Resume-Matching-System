@@ -71,10 +71,9 @@ def create_resume_tool(
             queries = [query]
 
 
-        print("\n====== Search Queries ======")
-
-        for i, q in enumerate(queries, 1):
-         print(f"{i}. {q}")
+        #print("\n====== Search Queries ======")
+        #for i, q in enumerate(queries, 1):
+        #print(f"{i}. {q}")
 
 
 
@@ -95,13 +94,13 @@ def create_resume_tool(
             )
 
 
-            print(
-        f"\n🔍 Query: {q}"
-    )
+           # print(
+        #f"\n🔍 Query: {q}"
+    #)
 
-            print(
-        f"📄 Recall: {len(docs)}"
-    )
+            #print(
+        #f"📄 Recall: {len(docs)}"
+    #)
 
 
             # rerank

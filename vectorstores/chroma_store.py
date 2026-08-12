@@ -17,10 +17,10 @@ def load_vectorstore(
     )
 
 
-    print(
-        "加载简历库路径:",
-        DB_PATH
-    )
+    #print(
+        #"加载简历库路径:",
+        #DB_PATH
+    #)
 
 
     vectorstore = Chroma(

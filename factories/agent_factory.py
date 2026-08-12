@@ -68,9 +68,9 @@ def create_agent_instance():
     # ================================
 
 
-    print(
-        "加载已有简历向量库..."
-    )
+    #print(
+        #"加载已有简历向量库..."
+    #)
 
 
     resume_vectorstore = load_vectorstore(
