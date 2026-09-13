@@ -247,8 +247,13 @@ models/
 
 # API Keys
 *.key
-*.json
+job.json
+resume.json
 secrets/
+.env
+
+# Local data
+data/raw_jobs.json
 
 # Logs
 logs/

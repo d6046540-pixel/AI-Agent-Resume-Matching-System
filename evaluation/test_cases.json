@@ -1,0 +1,32 @@
+[
+    {
+        "name": "候选人岗位匹配",
+        "question": "请分析当前候选人的背景是否适合这个岗位，并说明主要匹配点和不足。",
+        "expected_tools": [
+            "resume_search",
+            "job_search",
+            "job_match",
+            "hr_candidate_analysis"
+        ]
+    },
+    {
+        "name": "招聘风险分析",
+        "question": "请重点分析这个候选人的招聘风险，以及哪些信息需要在面试中进一步验证。",
+        "expected_tools": [
+            "resume_search",
+            "job_search",
+            "job_match",
+            "hr_candidate_analysis"
+        ]
+    },
+    {
+        "name": "结构化面试方案",
+        "question": "请根据候选人的简历和当前岗位，设计一套结构化面试方案。",
+        "expected_tools": [
+            "resume_search",
+            "job_search",
+            "job_match",
+            "generate_interview_plan"
+        ]
+    }
+]
